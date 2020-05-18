@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block h1 %}Mes commande{% endblock %}
+
+
+
+{% block body %}
+
+{% for commande in commandes %}
+<div class="mb-5">
+    <h3>Commande n°{{ commande.id }}</h3>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produits</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for info in commande.produit %}
+            <tr>
+                <td>
+                    <a href="{{ path("produit_fiche", { id: info.produit.id }) }}" class="text-success font-weight-bold"> {{ info.produit.titre }} </a>
+                </td>
+                <td>{{ info.quantite }}</td>
+                <td>{{ info.prixTotal }}</td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <th>Etat : <span class="text-danger">{{ commande.etat.titre }}</span></th>
+                <th>Total de la commande :</th>
+                <td>{{ commande.total }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endfor %}
+
+{% endblock %}

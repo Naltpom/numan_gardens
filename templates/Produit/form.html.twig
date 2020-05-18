@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block h1 %}
+        {%  if titre is defined %}
+{{ titre }}
+
+{% else %}
+        Ajouter un produit
+{% endif %}
+
+{% endblock %}
+
+
+{% block body  %}
+
+  {# {{ form(form)}}#}
+<div class="row justify-content-center" >
+        <div class="col-lg-6">
+                {% if produit is defined %}
+                        {%  set image = produit.image|last %} 
+                        {% if produit.image.image01 is defined %}
+                                <img src="{{ asset('build/images/' ~ image.image01) }}" style=" min-width:50%; height:600px;">  
+                        {% endif %} 
+                {% endif %}
+        </div>
+</div>
+<div class="row justify-content-center" >
+        <div class="col-lg-4">
+                {{ form_start(form) }}
+                        {{ form_row(form.titre) }}
+                        {{ form_row(form.description) }}
+                        {{ form_row(form.reference) }}
+                        {{ form_row(form.volume) }}
+                        {{ form_row(form.stock) }}
+                        {{ form_row(form.certificat) }}
+                        {{ form_row(form.categorie) }}
+                        {{ form_row(form.prix) }}
+                {{  form_end(form) }}
+                <a href="{{ path("produit") }}" class="btn btn-danger">annuler</a>
+                {{ form_row(form.enregistrer, { 'label': bouton }) }}  
+        </div>
+</div>
+
+
+
+      
+
+
+
+               
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block h1 %}
+        {%  if titre is defined %}
+{{ titre }}
+
+{% else %}
+        Ajouter une catégorie
+{% endif %}
+
+{% endblock %}
+
+
+
+{% block body  %}
+        {{ form_start(form) }}
+                {{ form_row(form.titre) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.type) }}
+                <div class="row">
+                        <div class="col-lg-2">
+                                {{ form_row(form.enregistrer, { 'label': bouton }) }}
+                        </div>
+                        <div class="col-lg-2">
+                                <a href="{{ path("categorie") }}" class="btn btn-danger">annuler</a>
+                        </div>
+                </div>
+        {{  form_end(form) }}
+{% endblock %}
+
+
+
+

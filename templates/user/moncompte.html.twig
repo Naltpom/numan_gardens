@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mon compte{% endblock %}
+{% block h1 %}Mon compte{% endblock %}
+{% block body %}
+    
+        {# dump app.user permet de recuperer les info consernant l'utilisateur connecter
+        pour afficher un valeur recise, il faut se referer au tableau de sortie du dump 
+        ex : 
+            pour afficher l'email, {{ app.user.email }}
+            pour afficher le pseudo, {{ app.user.pseudo }}
+        ici l'utilisateur peut aussi avoir de commande ou des commantaire
+        donc un exemple pour afficher ses commentaire
+            on va utiliser une boucle car c'est un array qui peut comporter plusieur commentaire
+                {% for commentaire in app.user.commentaires %}
+                    {{ commentaire }}
+                {% endfor %}
+     #}
+
+        <div><p>Email :{{ app.user.email }}</p></div>
+        <div><p>Pseudo : {{ app.user.pseudo }}</p></div>
+        <div><p>Nom : {{ app.user.Nom }}</p></div>
+        <div><p>Prénom : {{ app.user.Prenom }}</p></div>
+        <div><p>Civilité : {{ app.user.civilite }}</p></div>
+        <div><p>code postale : {{ app.user.codepostal }}</p></div>
+        <div><p>Ville : {{ app.user.ville }}</p></div>
+        <div><p>Adresse:{{ app.user.adresse }} </p></div>
+
+        <a href="{{ path("moncompte_modifier", { "id": app.user.id }) }}"><i class="fa fa-pen"> Modifier</i></a>                  
+       
+        {# {{ dump(app.user) }} #}
+        
+{% endblock %}

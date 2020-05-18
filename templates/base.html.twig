@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{{ encore_entry_link_tags("app") }}{% endblock %}
+    </head>
+    <body>
+        {% include "menu.html.twig" %}
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-2">
+                <h1 class="h3 mb-0 text-gray-800">{% block h1 %}{% endblock %}</h1>
+                
+            </div>
+        {% block body %}{% endblock %}
+        </div>
+
+        
+        {# <footer class="page-footer font-small bg-secondary navbar-secondary">
+             <section class="row section-footer1 p-4">
+                <div class="col-md-4 mx-auto text-center">     
+                    <img src="logo.png" alt="" > 
+                    <div class="div-footer1 p-3">
+                        <h3>Numan Gardens</h3>
+                        <p> Contact@hotmail.fr</p>
+                        <a href="facebook.fr">Facebook</a>
+                        <a href="twitter.fr">Twitter</a>
+                        <a href="instagram.fr">Instagram</a>
+                        <h3>La Nature vous dévoile ses secrets </h3>
+                    </div> 
+                </div>
+                <div class="col-md-4 mx-auto">
+                    <img src="{{asset('images/footer2.jpg')}}">
+                </div>
+            </section>
+            <section class="row section-footer2">
+                <div class="col-md-6 mx-auto text-center div-footer2">
+                    <a href="#">Contact</a>
+                    <a href="#">CGV</a>
+                    <a href="#">Qui sommes nous?</a>
+                    <a href="#">Plan du site</a>
+                </div>
+            </section>
+            <section class="row section-footer3">
+                <div class="col-md-3 mx-auto">
+                    <img src="{{asset('images/labelbio.jpeg')}}" alt="" class="labels">
+                    <img src="{{asset('images/onssa.jpg')}}" alt="" class="labels">
+                </div>
+            </section>  
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3 text-white">© 2020 Copyright:
+                <a style="color:lightblue;" href="/"> NumanGarden</a>
+            </div>
+            <!-- Copyright -->
+        </footer> #}
+        {% block javascripts %}{{ encore_entry_script_tags("app") }}{% endblock %}
+    </body>
+</html>

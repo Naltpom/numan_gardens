@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block body  %}
+
+<form method="POST">
+     <div>
+          <label>Titre</label>
+          <input type="text" name="titre">
+     </div>
+     <div>
+          <label>Description</label>
+          <textarea  name="description"></textarea>
+     </div>
+     <div>
+          <label>Type</label>
+          <textarea  name="type"></textarea>
+     </div>
+     <button type="submit">Enregistrer</button>
+</form>
+
+{% endblock %}
+

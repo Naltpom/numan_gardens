@@ -1,0 +1,43 @@
+
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block h1 %}Detail de la commande {{ commande.id }}{% endblock %}
+
+{% block body %}
+    <h6 class="">Commande effectuer le {{ commande.dateEnregistrement|date("d/m/Y h:m") }}</h6>
+    <h6 class="mb-2">Etat : <span class="text-danger">{{ commande.etat.titre }}</span></h6>
+    {% for produit in details %}
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{{ produit.produit.titre }}</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                            {% if produit.produit.image|last is not empty %}
+                                {% set image = produit.produit.image|last %} 
+                                <img class="card-img-top" src="{{ asset('/img/' ~ image.image01) }}" alt="">
+                            {% else %}
+                                <img class="card-img-top" src="{{ asset('/img/') }}" alt="Aucune images disponible">
+                                    
+                            {% endif %}
+                    </div>
+                    <div class="col-8">
+                        <p>{{ produit.produit.description }}<p>
+                        <p>{{ produit.produit.volume }} ml<p>
+                        <p>Quantite commandé : {{ produit.quantite }}<p>
+                        <p>Prix du produit : {{ produit.prixUnique }}€ <br>Soit un total de : {{ produit.prixTotal }}€ <p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <a href="{{ path("commande") }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Retour</a>
+{% endblock %}

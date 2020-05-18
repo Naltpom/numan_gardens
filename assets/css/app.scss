@@ -1,0 +1,189 @@
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: rgb(230, 230, 230);
+    z-index: 1;
+}
+// nav, footer{
+//     background-color: black;
+//     color:white;
+// }
+nav a.visited, nav a{color:white;}
+
+
+/****************************** -- href -- ******************************/
+ a
+ {
+     text-decoration: none !important;
+     color: black !important;
+ }
+
+ /****************************** -- HEADER -- ******************************/
+ header
+ {
+     min-height: 80vh;
+     background-image: url(../images/padedegarde.png);  
+     background-repeat: no-repeat;
+     background-size: cover; 
+     background-position: top;
+ }
+//  .navbar
+//  {
+//      z-index: 100;
+//      width: 100%;
+//      position: fixed !important;
+//      font-size: 1.5vw;
+//  }
+  .navbar a
+ {
+    text-decoration: none !important;
+     color: rgb(113, 134, 58) !important;
+ }
+ header img
+ {
+     height: 10vh;
+ }
+
+ #logo_img{
+    height: 50px;
+ }
+
+
+
+/****************************** -- Footer -- ******************************/
+
+footer
+{
+  background-image: url(../images/footer.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 60vh;
+}
+.img-footer
+{
+    border-radius: 100%;
+    border: 3px solid rgb(93, 79, 70);
+    max-width: 400px;
+}
+.section-footer1
+{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.section-footer2
+{
+    margin-top: 80px;
+    width: 100%;
+    height: 10vh;
+}
+.div-footer1 a
+{
+    color: rgb(47, 141, 3) !important;
+}
+.div-footer2 a
+{
+    border-left: 1px rgb(93, 79, 70) solid;
+    padding: 5px 20px;
+    font-size: 1.3vw;
+    color: rgb(47, 141, 3) !important;
+}
+.section-footer3
+{
+    width: 100% ;
+}
+.div-footer1
+{
+    background-color: rgba(253, 253, 253, 0.774);
+    border: rgb(93, 79, 70) 3px solid;
+    font-size: 1.2vw;
+}
+.labels
+{
+    height: 10vh;
+}
+
+
+
+
+
+
+
+main
+{
+    width: 100%;
+}
+
+/****************************** -- Main PRODUIT-- ******************************/
+
+
+
+.carousel-produit
+{
+    margin: 80px 0px;
+    background-image: url(../images/fond.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
+    padding: 30px 0px;
+}
+
+/*######################### Carousel ###################*/
+
+.img-fluid  {width: 250px; height: 200px; margin: auto;}
+.carousel   {width: 100%;}
+// .carousel-control-prev  {background-color: rgba(83, 230, 39, 0.527) !important;}
+// .carousel-control-next  {background-color: rgba(83, 230, 39, 0.527) !important;}
+.carousel-item {height: 50vh;}
+
+/*###################### FIN Carousel ###################*/
+
+
+
+
+/****************************** -- Main Gamme Beauté-- ******************************/
+
+.Gamme-beaute-cartes
+{
+    display: flex;
+    justify-content: space-between;
+    margin: 100px;
+    width: 100%;
+}
+.Gamme-beaute-div
+{
+    width: 100%  ;
+}
+.Gamme-beaute a
+{
+    color: white !important;
+}
+
+.card-img-top
+{
+    max-height: 55vh;
+    min-height: 50vh;
+}
+.h2-gammes
+{
+    margin-top: 70px;
+    
+}
+
+/****************************** -- Main Fiche-- ******************************/
+.fiche a
+{
+    color: rgb(47, 141, 3) !important;
+}
+.fiche
+{
+    margin: 100px;
+    
+}
+
+.ajouter-panier
+{
+    height: 40vh;
+}

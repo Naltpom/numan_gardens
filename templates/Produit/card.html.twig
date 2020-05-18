@@ -1,0 +1,41 @@
+
+
+
+{# <div class="col mb-4">
+    <div class="card">
+      <a href="{{ path("produit_fiche", { id: produit.id }) }}">
+            <div>
+              {% if produit.image.image01 is defined %}
+                {%  set image = produit.image|last %} 
+                <img src="{{ asset('img/' ~ image.image01) }}" style=" min-width:50%; height:20vh;"> 
+               {% endif %}
+            </div>
+      </a>
+      <div class="card-body text-center">
+        <h4 class="card-title">
+          <a href="{{ path("produit_fiche", { id: produit.id }) }}" class="text-dark">{{ produit.titre }}</a>
+        </h4>
+        <h5>{{ produit.prix  }}€</h5>
+     <p class="card-text">{{ produit.description }} </p>
+      </div>
+      <div class="card-footer text-center">
+            <a href="{{ path("produit_fiche", { id: produit.id }) }}" class="btn btn-dark">Voir le détail &raquo;</a>
+      </div>
+    </div>
+  </div> #}
+  <div class="card">    
+    {% if produit.image|last is not empty %}
+      {% set image = produit.image|last %} 
+      <img class="" src="{{ asset('/img/' ~ image.image01) }}" alt="" style="width:100%;">
+    {% else %}
+      <img class="" src="{{ asset('/img/') }}" alt="Aucune images disponible">
+    {% endif %}
+    {% for image in produit.image %}
+      {# {{ dump(image.image01) }} #}
+    {% endfor %}
+    <div class="card-body mx-2 p-1">
+        <h5 class="card-title">{{ produit.titre }}</h5>
+        <p class="card-text">{{ produit.prix  }}€</p>
+        <a href="{{ path("produit_fiche", { id: produit.id }) }}" class="btn btn-outline-secondary" type="button">Voir le détail &raquo;</a>
+    </div>
+  </div>

@@ -1,0 +1,55 @@
+<div class="card my-2">
+    {# Affichage du pseudo et de la note #}
+    <div class="card-header d-flex justify-content-between">
+    <h5>{{ commentaire.user.pseudo }}</h5>
+    {% if commentaire.note == 1 %}
+    <h5 class="text-warning">
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+    </h5>
+    {% elseif commentaire.note == 2  %}
+    <h5 class="text-warning">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+    </h5>
+    {% elseif commentaire.note == 3  %}
+    <h5 class="text-warning">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+    </h5>
+    {% elseif commentaire.note == 4  %}
+    <h5 class="text-warning">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+    </h5>
+    {% elseif commentaire.note == 5  %}  
+    <h5 class="text-warning">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+    </h5>
+    {% endif %}
+    </div>
+    {# Affichage du commentaire #}
+    <div class="card-body">
+    {{ commentaire.commentaire }}
+    </div>
+    {# Affichage du la date #}
+    <div class="card-footer text-muted">
+    {{ commentaire.dateEnregistrement|date("m/d/Y") }}
+    </div>
+</div>

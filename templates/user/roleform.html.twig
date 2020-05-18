@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block h1 %}Modifier les role de {{ user.email }}{% endblock %}
+
+{% block body %}
+  
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Selectionnez les roles</h6>
+        <p class="text-muted p-0 m-0">Par default une nouvelle inscription attribut le role de User</p>
+    </div>
+    <div class="card-body">
+        <form method="post" action="{{ path('user_roles_verif', {'id': user.id }) }}">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="ROLE_USER" id="user" name="user" checked disabled>
+                <label class="form-check-label" for="user">
+                    User (accès simple, ajouter valider son panier, modifier ses informations)
+                </label>
+            </div>
+            <div class="form-check">
+                
+                {# Dans l'input admin si le user et admin alors la case sera coché par default sinon non #}
+                <input class="form-check-input" type="checkbox" value="ROLE_ADMIN" id="admin" name="admin" {% for role in user.roles %}{% if role is same as('ROLE_ADMIN') %}checked{% endif %}{% endfor %}>
+                <label class="form-check-label" for="admin">
+                    Admin (accès moderation, voir, modifier, supprimer la plus part des informations de la base)
+                </label>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-success">Enregistrer</button>
+                <a href="{{ path("user") }}"><i class="fa fa-reply" style="color:black;"> Retour</i></a>                       
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

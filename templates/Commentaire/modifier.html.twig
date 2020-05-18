@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaire{% endblock %}
+
+{% block h1 %}Modifier l'etat du commentaire{% endblock %}
+
+{% block body %}
+
+  {% include "Commentaire/card.html.twig" %}
+  <form method="post" action="{{ path('commentaire_etatModifier', {'id': commentaire.id }) }}" class="m-0 p-0 form-inline">
+      <div class="form-group">
+          <input type="hidden" name="" value="">
+          <select class="form-control mr-2" id="etatId" name="etatId">
+            {%  for etat in etats %} 
+              {% if commentaire.etat.id == etat.id %}
+                <option value="{{ etat.id }}" selected>{{ etat.titre }}</option>
+              {% else %}
+                <option value="{{ etat.id }}">{{ etat.titre }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          <button class="btn btn-success">Changer l'etat</button>
+      </div>
+  </form> 
+
+{% endblock %}

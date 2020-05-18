@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block h1 %}Modification compte{% endblock %}
+{% block body %}
+{# 
+    {{ form_start(formUser) }}
+       
+        {{ form_row(formUser.email) }}
+        {{ form_row(formUser.pseudo) }}
+        {{ form_row(formUser.nom) }}
+        {{ form_row(formUser.prenom) }}
+        {{ form_row(formUser.civilite) }}
+        {{ form_row(formUser.code_postal) }}
+        {{ form_row(formUser.ville) }}
+        {{ form_row(formUser.adresse) }}
+        {{ form_row(formUser.Password) }}
+        {{ form_row(formUser.agreeTerms) }}
+       
+    {{ form_end(formUser) }} #}
+
+    {{ form(formUser, { "attr": { "id": "formUser"}}) }}
+   
+        <div class="row">
+            <div class="form-group">
+                <button type="submit" form="formUser" class="btn btn-primary">
+                    {{ bouton is defined ? bouton : "Enregistrer"  }}
+                </button>
+            </div>
+            <div class="form-group ml-2">
+                <a href="{{ path("mon_compte") }}" class="btn btn-danger">Annuler</a>
+            </div>
+        </div>
+    
+{% endblock %}

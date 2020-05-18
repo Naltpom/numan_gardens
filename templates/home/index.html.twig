@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{#
+    affiche pour tous les cards avec tout les produits
+#}
+{% block h1 %}Produits{% endblock %}
+
+
+
+{% block body %}
+
+{% include "home/form.html.twig" %}
+
+<div class="row">
+    <div class="card-columns">       
+        {%  for produit in produit %}
+            {% include "produit/card.html.twig" %}
+        {% endfor %}
+    </div> 
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

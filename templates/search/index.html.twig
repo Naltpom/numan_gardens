@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block h1 %}Resultat de la recherche{% endblock %}
+
+{% block body %}
+    {% if categories|length > 0 %}
+        <div class="row d-flex flex-column mt-4">
+            <h2>Categories</h2>
+            <h6 class="font-weight-lighter font-italic text-secondary">Nb de resultats : <span class="font-weight-bold text-danger">{{ categories|length }}</span></h6>
+        </div>
+        <div class="row">
+            {% for categorie in categories %}
+
+                <div class="card-columns">
+                    <div class="card">    
+                        <div class="card-body mx-2 p-1">
+                            <h5 class="card-title">{{ categorie.titre }}</h5>
+                            <p class="card-text">{{ categorie.description  }}</p>
+                        </div>
+                    </div>
+                </div>
+                <h3>Produit de la categorie</h3>
+                <div class="card-columns">
+                    {% for produit in categorie.produits %}
+                        {% include "produit/card.html.twig" %}
+                    {% endfor %}
+                </div>        
+            {% endfor %}
+        </div>    
+    {% endif %}
+
+    {% if produits|length > 0 %}
+        <div class="row d-flex flex-column mt-4">
+            <h2>Produits</h2>
+            <h6 class="font-weight-lighter font-italic text-secondary">Nb de resultats : <span class="font-weight-bold text-danger">{{ produits|length }}</span></h6>
+        </div>
+        <div class="row">
+            <div class="card-columns">
+                {% for produit in produits %}
+                    {% include "Produit/card.html.twig" %}
+                {% endfor %}
+            </div>        
+        </div>    
+    {% endif %}
+
+    {% if commentaires|length > 0 %}
+        <div class="row d-flex flex-column mt-4">
+            <h2 class="">Commentaires</h2>
+            <h6 class="font-weight-lighter font-italic text-secondary">Nb de resultats : <span class="font-weight-bold text-danger">{{ commentaires|length }}</span></h6>
+        </div>
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <ul class="list-group">
+                {% for commentaire in commentaires %}
+                    {% include "Commentaire/card.html.twig" %}
+                {% endfor %}
+                </ul>
+            </div>
+            {# <div class="card-columns">
+                {% for commentaire in commentaires %}
+                    {% include "Commentaire/card.html.twig" %}
+                {% endfor %}
+            </div>         #}
+        </div>    
+    {% endif %}
+{% endblock %}

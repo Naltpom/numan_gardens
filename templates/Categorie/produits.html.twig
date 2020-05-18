@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block h1 %}{{ h1 }}{% endblock %}
+{% block body %}
+
+    {# <pre>
+        {{ dump(produits) }}
+    </pre>  #}
+    <div class="row">
+        <div class="card-columns">
+               
+            {% for produit in produits %}
+                {% include "produit/card.html.twig" %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

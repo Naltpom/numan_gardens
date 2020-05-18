@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+  <!-- Navbar content -->
+  <a class="navbar-brand"  href="{{ path('home') }}"><img id="logo_img" src="{{asset('images/logo.png')}}" ></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-item nav-link active" href="{{ path('home') }}">Accueil<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link"  href="{{ path('home_produits') }}">Produits</a>
+      </li>
+
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Gammes</a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ path('massage') }}">Gamme massage</a>
+          <a class="dropdown-item" href="{{ path('beaute') }}">Gamme Beauté</a>
+          <a class="dropdown-item" href="{{ path('hammam') }}">Gamme Hammam</a>
+          <a class="dropdown-item" href="{{ path('arganBio') }}">Gamme d'argan bio</a>
+          <a class="dropdown-item" href="{{ path('huilsVegetal') }}">Gammes huils végétales</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link"  href="{{ path('home_catalogue') }}">Catalogue</a>
+      </li>
+      {% if is_granted("ROLE_ADMIN") %}
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> ADMIN</a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ path('categorie') }}">Categories</a>
+          <a class="dropdown-item" href="{{ path('commande') }}">Commandes</a>
+          <a class="dropdown-item" href="{{ path('commentaire') }}">Commentaires</a>
+          <a class="dropdown-item" href="{{ path('etat') }}">Etats</a>
+          <a class="dropdown-item" href="{{ path('produit') }}">Produits</a>
+          <a class="dropdown-item" href="{{ path('user') }}">Users</a>
+
+        </div>
+      </li>
+      {% endif %}
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0 mr-5" action="{{ path('home') }}search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="mot">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+      <ul class="navbar-nav ">
+
+        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+          <li class="nav-item active">
+            <a class="nav-item nav-link" href="{{ path('mon_compte') }}"></a>
+          </li>
+
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> {{ app.user.pseudo }}</a>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ path('mon_compte') }}">Mon Profil</a>
+              <a class="dropdown-item" href="{{ path('panier') }}">Mon panier</a>
+              <a class="dropdown-item" href="{{ path('panier_commande') }}">Mes commande</a>
+            </div>
+          </li>
+
+
+
+
+          <li class="nav-item active"><a class="nav-item nav-link" href="{{ path('app_logout') }}">
+            <i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+          </li>
+        {% else %}
+          <li class="nav-item active">
+            <a class="nav-item nav-link" href="{{ path('app_login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-item nav-link" href="{{ path('app_register') }}"><i class="fas fa-user-plus"></i> Insription</a>
+          </li>
+        {% endif %}
+      </ul>
+        {# <a class="nav-item nav-link disabled" href="#">Disabled</a> #}
+
+  </div>
+</nav>

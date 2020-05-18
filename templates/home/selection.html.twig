@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block h1 %}Selection{% endblock %}
+
+
+
+{% block body %}
+{% include "home/form.html.twig" %}
+
+{% for categorie in categories %}
+    {% for key, produits in categorie %}
+        <h3>{{ key }}</h3>
+        <div class="row">
+            <div class="card-columns"> 
+                {% for produit in produits %}
+                    {% include "produit/card.html.twig" %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{% endblock %}
+
+

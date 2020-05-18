@@ -1,0 +1,146 @@
+{% extends "base.html.twig" %}
+{% block h1  %}Fiche produit{% endblock h1 %}
+
+{% block body  %}
+
+
+<div class="row justify-content-center">
+  <div class=" col-lg-4 card mt-4">
+
+    {% if produit.image|last is not empty %}
+      {% set image = produit.image|last %} 
+      <img class="img-fluid" src="{{ asset('/img/' ~ image.image01) }}" style=" width:100%; height:auto;">
+    {% else %}
+      <img class="" src="{{ asset('/img/') }}" alt="Aucune images disponible">
+    {% endif %}
+  </div>
+  <div class="col-lg-8 card-body">
+    <h3 class="card-title"> {{ produit.titre }} </h3>
+    <h4>{{ produit.prix }}€</h4><hr>
+    <p class="card-text"><strong> Référence: </strong> {{ produit.reference }} </p>
+    <p class="card-text"><strong>Catégorie : </strong>  <a href="{{ path("categorie") }}" class="text-dark alert-link">{{ produit.categorie.titre }}</a></p>
+    <p class="card-text"><strong>Volume : </strong> {{ produit.volume }} </p>
+    <p class="card-text"><strong>Certifié : </strong>  {{ produit.certificat }}</p>
+    {% if produit.stock <= 10  %}
+    <p class="text-danger font-italic">Il ne reste plus que exemplaire(s) {{ produit.stock }} en stock</p>
+    {% else  %}
+    <h5 class="text-success">En stock</h5>    
+    {% endif %}
+    <hr>
+    <p class="card-text"><strong>Description du produit : </strong>  {{ produit.description }}</p>      
+  </div>
+  <div class="d-flex justify-between col mt-3 mb-2">
+
+
+    {# L'utilisateur doit être connecter pour utiliser cette fonction #}
+    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+    <form method="post" action="{{ path('panier_ajouter', {'id': produit.id }) }}" class="m-0 p-0 form-inline">
+      <div class="form-group">
+        <input type="hidden" name="" value="">
+        <label for="quantite" class="mr-2">Quantité :</label>
+        <select class="form-control mr-2" id="quantite" name="quantite">
+          {%  for item in 1..10 %} 
+            <option>{{ item }}</option>
+          {% endfor %}
+        </select>
+        <button class="btn btn-success">Ajouter au panier</button>
+        
+      </div>
+    </form>
+    {% else %}
+      <div class="alert alert-warning" role="alert">
+        <a href="{{ path('app_login') }}" class="alert-link">Connectez-vous pour ajouter a votre panier</a>
+      </div>
+    {% endif %}
+
+
+    <hr>
+    <a href="{{ path("home") }}"><i class="fa fa-reply" style="color:black;"> Retour à la boutique</i></a>                       
+  </div>
+</div>
+<hr>
+
+{# L'utilisateur doit être connecter pour utiliser cette fonction #}
+{% if is_granted("IS_AUTHENTICATED_FULLY") %}
+{# Formulaire de comentaire #}
+<form method="post" action="{{ path('commentaire_ajouter', {'id': produit.id }) }}" class="m-0 p-0 col-md-10 mx-auto">
+  <div class="d-flex flex-wrap">
+    {# Commentaire #}
+    <div class="form-group col-sm-12 col-md-8 col-lg-9 col-xl-10">
+      <label for="commentaire" class="font-weight-bold">Commentaire</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="commentaire" placeholder="Votre commentaire"></textarea>
+    </div>
+    {# Note #}
+    <div class="form-group col-sm-12 col-md-4 col-lg-3 col-xl-2">
+      <label for="note" class="mr-2 font-weight-bold">Note :</label>
+      <select class="form-control mr-2 text-warning" id="note" name="note">
+              <option value="5" class="text-warning">
+                &#9733;&#9733;&#9733;&#9733;&#9733;
+              </option>
+              <option value="4" class="text-warning">
+                &#9733;&#9733;&#9733;&#9733;&#9734;
+              </option>
+              <option value="3" class="text-warning">
+                &#9733;&#9733;&#9733;&#9734;&#9734;
+              </option>
+              <option value="2" class="text-warning">
+                &#9733;&#9733;&#9734;&#9734;&#9734;
+              </option>
+              <option value="1" class="text-warning">
+                &#9733;&#9734;&#9734;&#9734;&#9734;
+              </option>
+    
+      </select>
+    </div>
+  </div>
+  {# Validation d'envoi du formulaire #}
+  <button class="ml-4 btn btn-success">Valider</button>
+</form>
+{% else %}
+<div class="alert alert-warning" role="alert">
+  <a href="{{ path('app_login') }}" class="alert-link">Connectez-vous pour faire un commentaire</a>
+</div>
+{% endif %}
+
+
+{# Affichage des commentaires si existant #}
+{% if commentaires %}
+  <div class="col-md-10 mx-auto">
+    <ul class="list-group">
+      {% for commentaire in commentaires %}
+        {% include "Commentaire/card.html.twig" %}
+
+
+        {# L'utilisateur connecter doit être admin pour utiliser cette fonction #}
+        {% if is_granted("ROLE_ADMIN") %}
+        <form method="post" action="{{ path('commentaire_etatModifier', {'id': commentaire.id }) }}" class="m-0 mb-4 p-0 form-inline">
+          <div class="form-group">
+              <input type="hidden" name="idProduit" value="{{ produit.id }}">
+              <select class="form-control mr-2" id="etatId" name="etatId">
+                {%  for etat in etats %} 
+                  {% if commentaire.etat.id == etat.id %}
+                    <option value="{{ etat.id }}" selected>{{ etat.titre }}</option>
+                  {% else %}
+                    <option value="{{ etat.id }}">{{ etat.titre }}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+              <button class="btn btn-success">Changer l'etat</button>
+          </div>
+        </form> 
+        {% endif %}
+
+
+      {% endfor %}
+    </ul>
+  </div>
+{% else %}
+  Aucun commentaire
+{% endif %}
+    
+
+
+ 
+
+{% endblock %}
+

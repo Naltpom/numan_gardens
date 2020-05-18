@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block h1  %}Fiche catégorie{% endblock h1 %}
+
+{% block body  %}
+
+<hr>
+<div class="row">
+  <div class="col-lg-7" style="font-family: 'Merriweather', serif; font-size: XX-large;"> 
+    <p><strong>Titre catégorie : </strong> {{ categorie.titre }} </p>
+    <p><strong>Description : </strong> {{ categorie.description }} </p>
+    <p><strong>Type : </strong> {{ categorie.type }} </p> 
+  </div>
+</div>
+
+<a href="{{ path("categorie") }}"><i class="fa fa-reply" style="color:black;"> Retour à la liste</i></a>
+
+
+{% endblock %}
+

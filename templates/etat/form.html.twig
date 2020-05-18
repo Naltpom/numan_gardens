@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etats{% endblock %}
+{% block h1 %}{{ h1 }}{% endblock %}
+
+{% block body %}
+{# Formulaire de comentaire #}
+<form method="post" action="{{ path('etat_validation') }}" class="m-0 p-0 col-md-10 mx-auto">
+    <input type="hidden" name="action" value="{{ action }}">
+    {% if etat is defined %}
+        <input type="hidden" name="id" value="{{ etat.id }}">
+    {% endif %}
+    <div class="d-flex flex-wrap">
+        {# titre #}
+        <div class="form-group col-sm-12 col-md-8 col-lg-9 col-xl-10">
+            <label for="commentaire" class="font-weight-bold">Commentaire</label>
+            {% if etat is defined %}
+            <input type="text" class="form-control" id="titre" name="titre" value="{{ etat.titre }}">
+            {% else %}
+            <input type="text" class="form-control" id="titre" name="titre" placeholder="Nom de l'etat">
+            {% endif %}
+            
+        </div>
+        {# description #}
+        <div class="form-group col-sm-12 col-md-8 col-lg-9 col-xl-10">
+            <label for="commentaire" class="font-weight-bold">Description</label>
+            {% if etat is defined %}
+            <textarea class="form-control" id="description" rows="3" name="description">{{ etat.description }}</textarea>
+            {% else %}
+            <textarea class="form-control" id="description" rows="3" name="description" placeholder="Votre description"></textarea>
+            {% endif %}
+        </div>
+    </div>
+    {# Validation d'envoi du formulaire #}
+    <button class="ml-4 btn btn-success">{{ action }}</button>
+</form>
+{% endblock %}

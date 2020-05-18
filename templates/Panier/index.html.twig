@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block h1 %}Votre panier{% endblock %}
+
+{% block body %}
+
+
+
+
+{% if items | length > 0  %} 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantite</th>
+                <th>Total</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.produit.titre }}</td>
+                    <td>{{ item.produit.prix }}€</td>
+                    <td>{{ item.quantite }}</td>
+                    <td>{{ item.produit.prix * item.quantite }}€</td>
+                    <td>
+                        <a href="{{ path('panier_supprimer', {'id' :item.produit.id }) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right"><strong>TOTAL : </strong></td>
+                    <td>{{ total }}€</td>
+                    <td>
+                        <a href="{{ path('panier_validation') }}" class="btn btn-success btn-sm">Acheter</a>
+                    </td>  
+                </tr>
+            </tfoot>
+        </table>
+        {% if app.request.query.get("erreur") is defined %}
+        <p class="text-danger text-center">{{ app.request.query.get("erreur") }}<p>
+        {% endif %}
+        
+        
+{% else %}
+    <p> Votre panier est vide!! </p>
+
+
+{% endif %}
+
+
+
+
+
+{% endblock %}
