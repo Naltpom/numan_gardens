@@ -12,7 +12,7 @@
     <section>
         <h3>{{ key }}</h3>
         <div class="row d-flex flex-wrap mx-auto justify-content-between text-center">
-            {%  for produit in produit %}
+            {%  for produit in produits %}
                 {% include "produit/card.html.twig" %}
             {% endfor %}            
         </div>
