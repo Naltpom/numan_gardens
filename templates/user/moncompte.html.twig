@@ -15,17 +15,57 @@
                     {{ commentaire }}
                 {% endfor %}
      #}
+<section>
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Mes informations</h6><a href="{{ path("moncompte_modifier", { "id": app.user.id }) }}"><i class="fa fa-pen"> Modifier</i></a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ app.user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Pseudo</th>
+                                <td>{{ app.user.pseudo }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ app.user.nom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prenom</th>
+                                <td>{{ app.user.prenom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Civilite</th>
+                                <td>{{ app.user.civilite }}</td>
+                            </tr>
+                            <tr>
+                                <th>Code Postal</th>
+                                <td>{{ app.user.codepostal }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ville</th>
+                                <td>{{ app.user.ville }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>{{ app.user.adresse }}</td>
+                            </tr>
+                        </tbody>         
+                    </table>
+                </div>
+            </div>
+        </div>               
+    </div>     
+</section>
 
-        <div><p>Email :{{ app.user.email }}</p></div>
-        <div><p>Pseudo : {{ app.user.pseudo }}</p></div>
-        <div><p>Nom : {{ app.user.Nom }}</p></div>
-        <div><p>Prénom : {{ app.user.Prenom }}</p></div>
-        <div><p>Civilité : {{ app.user.civilite }}</p></div>
-        <div><p>code postale : {{ app.user.codepostal }}</p></div>
-        <div><p>Ville : {{ app.user.ville }}</p></div>
-        <div><p>Adresse:{{ app.user.adresse }} </p></div>
-
-        <a href="{{ path("moncompte_modifier", { "id": app.user.id }) }}"><i class="fa fa-pen"> Modifier</i></a>                  
+                          
        
         {# {{ dump(app.user) }} #}
         
