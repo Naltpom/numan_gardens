@@ -6,75 +6,80 @@
           {% else %}
             <img class="" src="{{ asset('/img/') }}" alt="Aucune images disponible">
           {% endif %}
-        <div class="card-body">
-          <h5 class="card-title">{{ produit.titre }}</h5> <hr>
-          <p class="card-text">Description Courte du produit.</p>
-          <p class="card-text"> {{ produit.prix  }}€ </p>
-          <p>
-          {% set nbdenote = 0 %}
-          {% set totalnote = 0 %}
-          {% for note in produit.commentaires %}
-            {% if note.etat.titre is same as("Refuser") %}
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="top">
+            <h5 class="card-title">{{ produit.titre }}</h5> <hr>
+            <p class="card-text">{{ produit.description|slice(0,80) }}..</p>
+            <p class="card-text"> {{ produit.prix  }}€ </p>
+          </div>
+          <div class="bottom">
+            <p>
+            {% set nbdenote = 0 %}
+            {% set totalnote = 0 %}
+            {% for note in produit.commentaires %}
+              {% if note.etat.titre is same as("Refuser") %}
+              {% else %}
+                {% set totalnote = totalnote + note.note %}
+                {% set nbdenote = (nbdenote + 1) %}
+              {% endif %}
+            {% endfor %}
+            {% if nbdenote is same as(0) and totalnote is same as(0) %}
+              {# Aucune note #}
             {% else %}
-              {% set totalnote = totalnote + note.note %}
-              {% set nbdenote = (nbdenote + 1) %}
+              {% set moyenne = totalnote /  nbdenote %}
+              {% if moyenne <= 1.4 %}
+              <h5 class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  ({{ moyenne|number_format(2) }})
+              </h5>
+              {% elseif moyenne >= 1.5 and moyenne <= 2.4 %}
+              <h5 class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  ({{ moyenne|number_format(2) }})
+              </h5>
+              {% elseif moyenne >= 2.5 and moyenne <= 3.4  %}
+              <h5 class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  ({{ moyenne|number_format(2) }})
+              </h5>
+              {% elseif moyenne >= 3.5 and moyenne <= 4.4 %}
+              <h5 class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  ({{ moyenne|number_format(2) }})
+              </h5>
+              {% elseif moyenne >= 4.5 and moyenne <= 5 %}  
+              <h5 class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  ({{ moyenne|number_format(2) }})
+              </h5>
+              {% endif %}
             {% endif %}
-          {% endfor %}
-          {% if nbdenote is same as(0) and totalnote is same as(0) %}
-            {# Aucune note #}
-          {% else %}
-            {% set moyenne = totalnote /  nbdenote %}
-            {% if moyenne <= 1.4 %}
-            <h5 class="text-warning">
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                ({{ moyenne|number_format(2) }})
-            </h5>
-            {% elseif moyenne >= 1.5 and moyenne <= 2.4 %}
-            <h5 class="text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                ({{ moyenne|number_format(2) }})
-            </h5>
-            {% elseif moyenne >= 2.5 and moyenne <= 3.4  %}
-            <h5 class="text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                ({{ moyenne|number_format(2) }})
-            </h5>
-            {% elseif moyenne >= 3.5 and moyenne <= 4.4 %}
-            <h5 class="text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                ({{ moyenne|number_format(2) }})
-            </h5>
-            {% elseif moyenne >= 4.5 and moyenne <= 5 %}  
-            <h5 class="text-warning">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                ({{ moyenne|number_format(2) }})
-            </h5>
-            {% endif %}
-          {% endif %}
-          
+            
 
-          </p>
-          <a href="{{ path("produit_fiche", { id: produit.id }) }}" class="btn btn-success text-white">Voir le produit &raquo;</a>
+            </p>
+            <a href="{{ path("produit_fiche", { id: produit.id }) }}" class="btn btn-success text-white">Voir le produit &raquo;</a>
+          </div>
+
         </div>
       </div>
 

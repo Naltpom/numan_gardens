@@ -33,7 +33,7 @@ class HomeController extends AbstractController
     public function produit(ProduitRepository $pr){
         // On veut pouvori afficher tout les produit sur la page principale
         $produits = $pr->findAll();       
-        return $this->render("home/index.html.twig",[ "produit" => $produits ]);   
+        return $this->render("home/index.html.twig",[ "produits" => $produits ]);   
     }
     
     /**
