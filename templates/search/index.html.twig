@@ -19,8 +19,9 @@
                         </div>
                     </div>
                 </div>
-                <h3>Produit de la categorie</h3>
-                <div class="card-columns">
+                <br>
+                <h3 class="text-success">Produit de la categorie</h3>
+                <div class="row d-flex flex-wrap mx-auto justify-content-between text-center">
                     {% for produit in categorie.produits %}
                         {% include "produit/card.html.twig" %}
                     {% endfor %}
@@ -35,7 +36,7 @@
             <h6 class="font-weight-lighter font-italic text-secondary">Nb de resultats : <span class="font-weight-bold text-danger">{{ produits|length }}</span></h6>
         </div>
         <div class="row">
-            <div class="card-columns">
+            <div class="row d-flex flex-wrap mx-auto justify-content-between text-center">
                 {% for produit in produits %}
                     {% include "Produit/card.html.twig" %}
                 {% endfor %}

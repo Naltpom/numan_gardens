@@ -2,14 +2,231 @@
 {#
     affiche pour tous les cards avec tout les produits
 #}
-{% block h1 %}Numan Gardens{% endblock %}
+{% block title %}NG Accueil{% endblock %}
+{% block h1 %}{% endblock %}
 
 
 
 {% block body %}
 
 
-page de presentation
+    <Main class="container">    <!-- ou sans container -->
+
+        <section>
+        
+            <!--////////////// <Carousel> /////////////-->
+              <div class="col-md-12">
+
+                  <div id="carousel1" class="carousel slide my-4 " data-ride="carousel1">
+
+                    <div class="carousel-inner" role="listbox">
+
+                      <div class="carousel-item active carousel-Home">
+                        <img class="d-block img-fluid carouselHome" src="{{ asset('images/Gamme beauté/gamme beaute.png') }}" alt="First slide" >
+                      </div>
+
+                      <div class="carousel-item carousel-Home">
+                        <img class="d-block img-fluid carouselHome" src="{{ asset('images/Gamme beauté/beauté 1.png') }}" alt="Second slide">
+                      </div>
+                      <div class="carousel-item carousel-Home">
+                        <img class="d-block img-fluid carouselHome" src="{{ asset('images/Gamme beauté/beauté 2.png') }}" alt="Third slide">
+                      </div>
+
+                      <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{ asset('images/Gamme bio/gamme bio  1.png') }}" alt="four slide">
+                      </div>
+
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Gamme bio/game bio 2.png')}}" alt="four slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Gamme bio/gme bio 3.png')}}" alt="four slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Gamme bio/gamme bio 4.png')}}" alt="four slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Gamme hamam/gamme hamam.png')}}" alt="four slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Gamme hamam/hamam 1.png')}}" alt="fifth slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Gamme hamam/hamam 2.png')}}" alt="fifth slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Gamme hamam/hamam 3.png')}}" alt="fifth slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Gamme massage/gamm massag.png')}}" alt="sixt slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Gamme massage/massage 1.png')}}" alt="sixt slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Les huiles végétales/gamme HV 2.png')}}" alt="sixt slide">
+                        </div>
+                        <div class="carousel-item carousel-Home">
+                          <img class="d-block img-fluid carouselHome" src="{{asset('images/Les huiles végétales/gamme huiles végétales.png')}}" alt="sixt slide">
+                        </div>
+                        
+
+
+                    </div>
+                    <a class="carousel-control-prev fleche-carousel-Home" href="#carousel1" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next fleche-carousel-Home" href="#carousel1" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+              </div>
+              
+              <!--////////////// FIN  Carousel /////////////-->
+  </section>
+
+
+
+
+
+  <section class="Promo border p-4 my-5"> 
+    <h2>Les promotions d'été: </h2>
+    <h3>Profitez des réductions jusqu'à -50% !</h3>
+            <div class="row col-md-10 mx-auto Gamme-beaute-cartes">  <!--Cartes-->
+
+
+                <div class="card border border-secondary mx-2 my-4 text-center" style="width: 18rem;">
+                    <img src="{{asset('images/Gamme beauté/Crème amincissant.png')}}" class="card-img-top" alt="...">
+                    <div class="reduc bg bg-success"> <h3>-50%</h3></div>
+                    <div class="card-body">
+                      <h5 class="card-title">Crème amincissant 125ml</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <p> Prix: </p>
+                      <p>étoile + nb avis</p>
+                      <a href="fiche.html" class="btn btn-success">Voir le produit</a>
+                    </div>
+                  </div>
+
+
+                  <div class="card border border-secondary mx-2 my-4 text-center" style="width: 18rem;">
+                    <img src="{{asset('images/Gamme beauté/Crème amincissant.png')}}" class="card-img-top" alt="...">
+                    <div class="reduc bg bg-success"> <h3>-25%</h3></div>
+                    <div class="card-body">
+                      <h5 class="card-title">Crème amincissant 125ml</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <p> Prix: </p>
+                      <p>étoile + nb avis</p>
+                      <a href="fiche.html" class="btn btn-success">Voir le produit</a>
+                    </div>
+                  </div>
+
+
+                  <div class="card border border-secondary mx-2 my-4 text-center" style="width: 18rem;">
+                    <img src="{{asset('images/Gamme beauté/Crème amincissant.png')}}" class="card-img-top" alt="...">
+                    <div class="reduc bg bg-success"> <h3>-40%</h3></div>
+                    <div class="card-body">
+                      <h5 class="card-title">Crème amincissant 125ml</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <p> Prix: </p>
+                      <p>étoile + nb avis</p>
+                      <a href="fiche.html" class="btn btn-success">Voir le produit</a>
+                    </div>
+                  </div>
+            </div>
+  </section>
+
+
+  <section class="Best-sell  border p-4 my-5"> 
+    <h2>Nos meilleures ventes :</h2>
+            <div class="row col-md-10 mx-auto Gamme-beaute-cartes ">  <!---Cartes-->
+
+                <div class="card border border-secondary mx-2 my-4 text-center" style="width: 18rem;">
+                    <img src="{{asset('images/Gamme beauté/Crème amincissant.png')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Crème amincissant 125ml</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <p> Prix: </p>
+                      <p>étoile + nb avis</p>
+                      <a href="fiche.html" class="btn btn-success">Voir le produit</a>
+                    </div>
+                </div>
+
+                <div class="card border border-secondary mx-2 my-4 text-center" style="width: 18rem;">
+                  <img src="{{asset('images/Gamme beauté/Crème amincissant.png')}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Crème amincissant 125ml</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p> Prix: </p>
+                    <p>étoile + nb avis</p>
+                    <a href="fiche.html" class="btn btn-success">Voir le produit</a>
+                  </div>
+                </div>
+
+                <div class="card border border-secondary mx-2 my-4 text-center" style="width: 18rem;">
+                  <img src="{{asset('images/Gamme beauté/Crème amincissant.png')}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Crème amincissant 125ml</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p> Prix: </p>
+                    <p>étoile + nb avis</p>
+                    <a href="fiche.html" class="btn btn-success">Voir le produit</a>
+                  </div>
+                </div>
+
+            </div>
+  </section>
+
+
+
+
+  <section class="New-product  border p-4 my-5"> 
+    <h2>Nouveaux produits:</h2>
+            <div class="row col-md-10 mx-auto Gamme-beaute-cartes ">  <!--Cartes-->
+
+                <div class="card border border-secondary mx-2 my-4 text-center" style="width: 18rem;">
+                    <img src="{{asset('images/Gamme beauté/Crème amincissant.png')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Crème amincissant 125ml</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <p> Prix: </p>
+                      <p>étoile + nb avis</p>
+                      <a href="fiche.html" class="btn btn-success">Voir le produit</a>
+                    </div>
+                </div>
+
+                <div class="card border border-secondary mx-2 my-4 text-center" style="width: 18rem;">
+                  <img src="{{asset('images/Gamme beauté/Crème amincissant.png')}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Crème amincissant 125ml</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p> Prix: </p>
+                    <p>étoile + nb avis</p>
+                    <a href="fiche.html" class="btn btn-success">Voir le produit</a>
+                  </div>
+                </div>
+
+                <div class="card border border-secondary mx-2 my-4 text-center" style="width: 18rem;">
+                  <img src="{{asset('images/Gamme beauté/Crème amincissant.png')}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Crème amincissant 125ml</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p> Prix: </p>
+                    <p>étoile + nb avis</p>
+                    <a href="fiche.html" class="btn btn-success">Voir le produit</a>
+                  </div>
+                </div>
+
+            </div>
+  </section>
+
+
+
+
+
+    </Main>
+
 
 
 

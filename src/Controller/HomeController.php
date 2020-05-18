@@ -10,12 +10,23 @@ use App\Repository\ProduitRepository;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/qui_somme_nous", name="quisommenous")
+     * @Route("/qui_somme_nous", name="nous")
      */
-    public function home(ProduitRepository $pr){    
-        return $this->render("home/home.html.twig");   
+    public function nous(ProduitRepository $pr){    
+        return $this->render("home/nous.html.twig");   
     }
-
+    /**
+     * @Route("/cgv", name="cgv")
+     */
+    public function cgv(ProduitRepository $pr){    
+        return $this->render("home/cgv.html.twig");   
+    }
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(ProduitRepository $pr){    
+        return $this->render("home/contact.html.twig");   
+    }
     /**
      * @Route("/", name="home")
      */

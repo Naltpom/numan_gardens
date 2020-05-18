@@ -5,18 +5,28 @@
 {% block h1 %}Produits{% endblock %}
 
 
-
 {% block body %}
 
 {% include "home/form.html.twig" %}
 
-<div class="row">
-    <div class="card-columns">       
-        {%  for produit in produit %}
-            {% include "produit/card.html.twig" %}
-        {% endfor %}
-    </div> 
-</div>
+    {# <section class="row p-4 Row-Cartes">
+        <div class="Gamme-beaute-cartes">  <!---Cartes-->   
+            <div class="row">
+                <div class="card-columns">            
+                    {%  for produit in produit %}
+                        {% include "produit/card.html.twig" %}
+                    {% endfor %}
+                </div> 
+            </div>
+        </div>
+    </section> #}
+    <section>
+        <div class="row d-flex flex-wrap mx-auto justify-content-between text-center">
+            {%  for produit in produit %}
+                {% include "produit/card.html.twig" %}
+            {% endfor %}            
+        </div>
+    </section>
 
 
 

@@ -2,13 +2,10 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(255, 255, 255);
     z-index: 1;
 }
-// nav, footer{
-//     background-color: black;
-//     color:white;
-// }
+
 nav a.visited, nav a{color:white;}
 
 
@@ -42,7 +39,9 @@ nav a.visited, nav a{color:white;}
  }
  header img
  {
-     height: 10vh;
+     /*** Anciennement height: 10vh; seulement ****/
+     height: 50px;
+     width: 50px;
  }
 
  #logo_img{
@@ -53,32 +52,22 @@ nav a.visited, nav a{color:white;}
 
 /****************************** -- Footer -- ******************************/
 
-footer
+.footer-top
 {
   background-image: url(../images/footer.jpg);
   background-repeat: no-repeat;
+//   background-size: cover;
   background-size: cover;
   width: 100%;
-  height: 60vh;
+//   height: 60vh;
 }
 .img-footer
 {
     border-radius: 100%;
     border: 3px solid rgb(93, 79, 70);
-    max-width: 400px;
+    width: 80%;
 }
-.section-footer1
-{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-.section-footer2
-{
-    margin-top: 80px;
-    width: 100%;
-    height: 10vh;
-}
+
 .div-footer1 a
 {
     color: rgb(47, 141, 3) !important;
@@ -104,7 +93,9 @@ footer
 {
     height: 10vh;
 }
-
+@media screen and (max-width:768px){
+    #footer-right-img{display: none;}
+}
 
 
 
@@ -129,33 +120,53 @@ main
     color: white;
     padding: 30px 0px;
 }
+.carousel-produit a
+ {
+    color: white !important;
+ }
 
 /*######################### Carousel ###################*/
 
-.img-fluid  {width: 250px; height: 200px; margin: auto;}
-.carousel   {width: 100%;}
-// .carousel-control-prev  {background-color: rgba(83, 230, 39, 0.527) !important;}
-// .carousel-control-next  {background-color: rgba(83, 230, 39, 0.527) !important;}
-.carousel-item {height: 50vh;}
+.img-fluid  {width: 250px; height: 300px; margin: auto;}
+// .carousel-item {height: 600px;}
 
 /*###################### FIN Carousel ###################*/
 
 
 
+/****************************** -- Home-- ******************************/
+.carouselHome
+{
+    height: 80vh !important;
+    width: inherit !important;
+    
+}
+.carousel-Home
+{
+    height: 80vh;
+}
+
+.fleche-carousel-Home
+{
+    background-color: inherit !important;
+}
+.reduc
+{
+    position: relative;
+    top: -5%;                   /*  ou 58% */
+    left: 40%;
+    color: white;
+    width: 150px;
+}
 
 /****************************** -- Main Gamme Beauté-- ******************************/
 
-.Gamme-beaute-cartes
+
+.filtre-beaute
 {
-    display: flex;
-    justify-content: space-between;
-    margin: 100px;
-    width: 100%;
+    height: 60vh;
 }
-.Gamme-beaute-div
-{
-    width: 100%  ;
-}
+
 .Gamme-beaute a
 {
     color: white !important;
@@ -163,14 +174,24 @@ main
 
 .card-img-top
 {
-    max-height: 55vh;
-    min-height: 50vh;
+    max-height: 35vh;
+    min-height: 30vh;
 }
 .h2-gammes
 {
     margin-top: 70px;
     
 }
+.bannière-Gamme
+{
+    width: 100%;
+    height: 80vh;
+}
+
+
+
+
+
 
 /****************************** -- Main Fiche-- ******************************/
 .fiche a
@@ -187,3 +208,225 @@ main
 {
     height: 40vh;
 }
+
+
+/******************************************************* Inscription *********************************************/
+
+
+.inscrip
+{
+    background-image: url(../images/inscrip.jpg);
+    background-size: cover;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1vw;
+}
+
+.inscrip-label
+{
+    background-color: rgba(92, 92, 92, 0.918)
+}
+
+
+
+
+
+
+
+/******************************************************* COnnexion *********************************************/
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image:url(../images/fond.jpg);
+    background-size: cover;
+    height: 80vh;
+    margin: 3% 3% 3% 3% !important;
+}
+.login-form {
+    min-width: 250px;
+    max-width: 400px;
+    border-radius: 24px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 35px;
+}
+.login-form input[type = "text"] {
+    margin-top: 30px;
+}
+.login-form input[type = "password"] {
+    margin-top: 10px;
+}
+
+input {
+  outline: none;
+ }
+.links {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.links > a:first-of-type {
+    margin-right: 5px;
+}
+.links > a {    
+    background-color: #E0E0E0;
+    border-radius: 24px;
+    font-weight: 400;
+    color: black;
+    line-height: 12px;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+  font-family: 'Raleway';
+    transition: 0.25s;
+}
+.links > a:hover {  
+    opacity: 0.6;
+}
+.login-form input[type = "submit"] {
+    background-color:  #E0E0E0;
+    background-image: linear-gradient(19deg, rgb(162, 247, 195) 0%, rgb(22, 97, 20) 100%);
+    width: 100%;
+    color: white;
+    border: none;
+    margin-top: 35px;
+    cursor: pointer;
+    padding: 10px;
+    font-family: 'Raleway', sans-seriff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+.login-form input[type = "submit"]:hover {
+    opacity: 0.8;
+}
+.login-form input[type = "text"]:focus, .login-form input[type = "password"]:focus {
+    border: 2px rgb(8, 90, 26)olid;
+ }
+.login-form input[type = "text"], .login-form input[type = "password"] {
+    width: 100%;
+    border: none;
+    border-radius: 24px;
+    font-size: 1rem;
+    font-family: 'Raleway', sans-seriff;
+    background-color: gainsboro;
+    padding: 15px;
+    border: 2px solid green;
+} 
+
+/************************************************************************************************************************************************/
+/**********************************************************************Contact**************************************************************************/
+.contact
+{
+    background-image: url(../images/fond.jpg);
+    background-size: cover;
+    color: rgba(84, 230, 39, 0.884) ;
+    font-weight: bold;
+    font-size: 1.3vw;
+}
+
+
+
+
+
+
+#contact {
+    overflow: auto;   
+    height: 59vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background-image: url(../images/fond.jpg);
+      background-size: cover;
+      
+  }
+  #contact #form {
+    width:410px;
+    float:left;
+  }
+  #contact #form h2 {
+    font: 48px 'Bree Serif', Georgia, serif;
+  }
+  #contact #form span {
+    display:block;
+    float:left;
+    width:100px;
+    padding-top:5px;
+    font: 14px/16px'Bree Serif', Georgia, serif;
+    color: white;
+  
+  }
+  #contact #form input {
+    float:left;
+    width: 70vh;
+    height: vh;
+    border:0px;
+    color:#F1F1F1;
+    padding:10px 10px 10px 30px;
+    font: 11px/20px'Open Sans', Verdana, Helvetica, sans-serif;
+    margin-bottom:10px;
+    border: 2px solid green;
+  }
+  #contact #form textarea {
+    float:left;
+    border:0px;
+    width: 303px;
+    height: 107px;
+    padding:10px 10px 10px 30px;
+    font: 11px/20px'Open Sans', Verdana, Helvetica, sans-serif;
+    color:#F1F1F1;
+    resize: none;
+  }
+  #contact #form input.name {
+    background:#ffffff url(http://img7.uploadhouse.com/fileuploads/17737/177370145f09fe433945815665aa214f80dbc6af.png) no-repeat 10px 8px;
+  }
+  #contact #form input.email {
+    background:#ffffff url(http://img6.uploadhouse.com/fileuploads/17737/177370138cc63992182149e9befabff3eafa6d23.png) no-repeat 10px 9px;
+  }
+  #contact #form input.captcha {
+    background:#ffffff url(http://img3.uploadhouse.com/fileuploads/17737/17737011310213e71805ecf2292144cbbecf42ad.png) no-repeat 10px 9px;
+  }
+  #contact #form textarea.message {
+    background:#fffdfd url(http://img3.uploadhouse.com/fileuploads/17737/1773701229ed8c2f465a8274623ca8976adaf196.png) no-repeat 10px 8px;
+  }
+  #contact #form input.submit {
+    cursor: pointer;
+    width:85px;
+    height:30px;
+    float:right;
+    padding:0px 0px 5px 0px;
+    margin:10px 16px 0px 0px;
+    background:#4ddd6d;
+    color:#F1F1F1;
+    font: 14px/16px'Bree Serif', Georgia, serif;
+  }
+  #contact #captcha span{
+    width: 44px;
+  }
+  #contact #captcha input{
+    background: url(http://img3.uploadhouse.com/fileuploads/17737/17737011310213e71805ecf2292144cbbecf42ad.png) no-repeat scroll 0 0 transparent;
+    margin: 5px 0 0;
+    padding: 0;
+    border: medium none;
+    cursor: pointer;
+    width: 15px;
+  }
+  /************************************************************************************************************************************************/

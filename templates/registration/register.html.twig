@@ -1,22 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}NG Register{% endblock %}
 {% block h1 %}Inscription{% endblock %}
 {% block body %}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.pseudo) }}
-        {{ form_row(registrationForm.nom) }}
-        {{ form_row(registrationForm.prenom) }}
-        {{ form_row(registrationForm.civilite) }}
-        {{ form_row(registrationForm.code_postal) }}
-        {{ form_row(registrationForm.ville) }}
-        {{ form_row(registrationForm.adresse) }}
-        {# {{ dump(registrationForm) }} #}
-        {{ form_row(registrationForm.plainPassword) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+   <section class="inscrip border my-5 p-3">
+    {{ form_start(registrationForm) }}                
+    <div class="form-row">
+        <div class="form-group col-md-4 mx-auto inscrip-label p-3">               
+            {{ form_row(registrationForm.email) }}
+        </div> 
+        <div class="form-group col-md-4 mx-auto inscrip-label p-3">
+            {{ form_row(registrationForm.pseudo) }}
+        </div>                
+    </div>
 
-        <button type="submit" class="btn">Register</button>
+    <div class="form-row">
+        <div class="form-group col-md-4 mx-auto inscrip-label p-3">
+        {{ form_row(registrationForm.nom) }}
+        </div> 
+        <div class="form-group col-md-4 mx-auto inscrip-label p-3">
+        {{ form_row(registrationForm.prenom) }}
+        </div>                
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4 mx-auto inscrip-label p-3">
+        {{ form_row(registrationForm.civilite) }}
+        </div> 
+        <div class="form-group col-md-4 mx-auto inscrip-label p-3">
+        {{ form_row(registrationForm.code_postal) }}
+        </div>                
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4 mx-auto inscrip-label p-3">
+        {{ form_row(registrationForm.ville) }}
+        </div> 
+        <div class="form-group col-md-4 mx-auto inscrip-label p-3">
+        {{ form_row(registrationForm.adresse) }}
+        </div>                
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4 mx-auto inscrip-label p-3">
+        {{ form_row(registrationForm.plainPassword) }}
+        </div> 
+        <div class="form-group col-md-4 mx-auto inscrip-label p-5">
+        {{ form_row(registrationForm.agreeTerms) }}
+        </div>                
+    </div>
+
+    <div class="form-row">                   
+        <div class="form-group col-md-4 mx-auto text-center">
+            <button type="submit" class="btn btn-secondary col-md-4">S'inscrire</button>
+        </div>
+    </div>
+
     {{ form_end(registrationForm) }}
+
+</section>
+
+
 {% endblock %}

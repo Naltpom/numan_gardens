@@ -7,7 +7,7 @@
         {{ dump(produits) }}
     </pre>  #}
     <div class="row">
-        <div class="card-columns">
+        <div class="row d-flex flex-wrap mx-auto justify-content-between text-center">
                
             {% for produit in produits %}
                 {% include "produit/card.html.twig" %}

@@ -1,5 +1,5 @@
 {% extends "base.html.twig" %}
-{% block h1  %}Fiche produit{% endblock h1 %}
+{% block h1  %}{% endblock h1 %}
 
 {% block body  %}
 
@@ -30,6 +30,11 @@
     <p class="card-text"><strong>Description du produit : </strong>  {{ produit.description }}</p>      
   </div>
   <div class="d-flex justify-between col mt-3 mb-2">
+
+
+
+
+
 
 
     {# L'utilisateur doit être connecter pour utiliser cette fonction #}
@@ -68,7 +73,7 @@
     {# Commentaire #}
     <div class="form-group col-sm-12 col-md-8 col-lg-9 col-xl-10">
       <label for="commentaire" class="font-weight-bold">Commentaire</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="commentaire" placeholder="Votre commentaire"></textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="commentaire" placeholder="Votre commentaire" required></textarea>
     </div>
     {# Note #}
     <div class="form-group col-sm-12 col-md-4 col-lg-3 col-xl-2">
@@ -108,31 +113,28 @@
   <div class="col-md-10 mx-auto">
     <ul class="list-group">
       {% for commentaire in commentaires %}
-
-        {% if commentaire.etat.titre is same as("refuser") %}
-        
-          {% include "Commentaire/card.html.twig" %}
+        {% include "Commentaire/card.html.twig" %}
 
 
-          {# L'utilisateur connecter doit être admin pour utiliser cette fonction #}
-          {% if is_granted("ROLE_ADMIN") %}
-          <form method="post" action="{{ path('commentaire_etatModifier', {'id': commentaire.id }) }}" class="m-0 mb-4 p-0 form-inline">
-            <div class="form-group">
-                <input type="hidden" name="idProduit" value="{{ produit.id }}">
-                <select class="form-control mr-2" id="etatId" name="etatId">
-                  {%  for etat in etats %} 
-                    {% if commentaire.etat.id == etat.id %}
-                      <option value="{{ etat.id }}" selected>{{ etat.titre }}</option>
-                    {% else %}
-                      <option value="{{ etat.id }}">{{ etat.titre }}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-                <button class="btn btn-success">Changer l'etat</button>
-            </div>
-          </form> 
-          {% endif %}
+        {# L'utilisateur connecter doit être admin pour utiliser cette fonction #}
+        {% if is_granted("ROLE_ADMIN") %}
+        <form method="post" action="{{ path('commentaire_etatModifier', {'id': commentaire.id }) }}" class="m-0 mb-4 p-0 form-inline">
+          <div class="form-group">
+              <input type="hidden" name="idProduit" value="{{ produit.id }}">
+              <select class="form-control mr-2" id="etatId" name="etatId">
+                {%  for etat in etats %} 
+                  {% if commentaire.etat.id == etat.id %}
+                    <option value="{{ etat.id }}" selected>{{ etat.titre }}</option>
+                  {% else %}
+                    <option value="{{ etat.id }}">{{ etat.titre }}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+              <button class="btn btn-success">Changer l'etat</button>
+          </div>
+        </form> 
         {% endif %}
+
 
       {% endfor %}
     </ul>
