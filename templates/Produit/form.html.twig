@@ -9,19 +9,20 @@
 
 {% endblock %}
 {% block body  %}
-<div class="row justify-content-center" >
-        <div class="col-lg-6">
-                {% if produit is defined %}
-                        {% if produit.image|last is not empty %}
-                                {% set image = produit.image|last %} 
-                                <img class="img-fluid" src="{{ asset('/img/' ~ image.image01) }}" style=" width:100%; height:auto;">
-                        {% else %}
-                                <img class="" src="{{ asset('/img/') }}" alt="Aucune images disponible">
+<section class="justify-content-center">
+        <div class="row">
+                        {% if produit is defined %}
+                                {% if produit.image|last is not empty %}
+                                        {% set image = produit.image|last %} 
+                                        <img class="img-fluid" src="{{ asset('/img/' ~ image.image01) }}" style=" width:100%; height:auto;">
+                                {% else %}
+                                        <img class="" src="{{ asset('/img/') }}" alt="Aucune images disponible">
+                                {% endif %}
                         {% endif %}
-                {% endif %}
         </div>
-        <div class="col-lg-4">
-                {{ form_start(form) }}
+        <div class="row justify-content-center">
+                <form name="produit" method="post" enctype="multipart/form-data" class="col-md-7">
+
                         {{ form_row(form.titre) }}
                         {{ form_row(form.description) }}
                         {{ form_row(form.reference) }}
@@ -32,14 +33,10 @@
                         {{ form_row(form.prix) }}
                         
                 {{  form_end(form) }}
+                {{ form_row(form.enregistrer, { 'label': bouton }) }} 
+                <div class="col-md-7"><a href="{{ path("produit") }}" class="btn btn-danger">annuler</a></div>               
         </div>
-</div>
-        <div class="col-lg-2">
-                {{ form_row(form.enregistrer, { 'label': bouton }) }}      
-        </div>
-        <div class="col-lg-2">
-               <a href="{{ path("produit") }}" class="btn btn-danger">annuler</a>
-        </div>
+</section>
 {% endblock %}
 
 
