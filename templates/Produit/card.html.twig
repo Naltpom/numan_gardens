@@ -14,8 +14,11 @@
           {% set nbdenote = 0 %}
           {% set totalnote = 0 %}
           {% for note in produit.commentaires %}
-            {% set totalnote = totalnote + note.note %}
-            {% set nbdenote = (nbdenote + 1) %}
+            {% if note.etat.titre is same as("Refuser") %}
+            {% else %}
+              {% set totalnote = totalnote + note.note %}
+              {% set nbdenote = (nbdenote + 1) %}
+            {% endif %}
           {% endfor %}
           {% if nbdenote is same as(0) and totalnote is same as(0) %}
             {# Aucune note #}
