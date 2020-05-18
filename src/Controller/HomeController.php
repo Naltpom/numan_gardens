@@ -10,14 +10,14 @@ use App\Repository\ProduitRepository;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/qui_somme_nous", name="quisommenous")
      */
     public function home(ProduitRepository $pr){    
         return $this->render("home/home.html.twig");   
     }
 
     /**
-     * @Route("/produits", name="home_produits")
+     * @Route("/", name="home")
      */
     public function produit(ProduitRepository $pr){
         // On veut pouvori afficher tout les produit sur la page principale
@@ -33,4 +33,13 @@ class HomeController extends AbstractController
         //afficher le catalogue 
         return $this->render("home/catalogue.html.twig");
     }
+    /**
+     * @Route("/promotion", name="home_promotion")
+     */
+    public function promotion(){
+
+        //afficher le catalogue 
+        return $this->render("home/promotion.html.twig");
+    }
+    
 }

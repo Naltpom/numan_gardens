@@ -6,13 +6,13 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-item nav-link active" href="{{ path('home') }}">Accueil<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link"  href="{{ path('home_produits') }}">Produits</a>
-      </li>
 
+      <li class="nav-item active">
+        <a class="nav-link"  href="{{ path('home') }}">Produits</a>
+      </li>
+      {# <li class="nav-item active">
+        <a class="nav-link"  href="{{ path('home_promotion') }}">Promotions</a>
+      </li> #}
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Gammes</a>
         <div class="dropdown-menu " aria-labelledby="navbarDropdown">
@@ -25,6 +25,9 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link"  href="{{ path('home_catalogue') }}">Catalogue</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-item nav-link active" href="{{ path('quisommenous') }}">Qui sommes nous ?<span class="sr-only">(current)</span></a>
       </li>
       {% if is_granted("ROLE_ADMIN") %}
       <li class="nav-item dropdown active">
@@ -59,7 +62,7 @@
             <div class="dropdown-menu " aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{ path('mon_compte') }}">Mon Profil</a>
               <a class="dropdown-item" href="{{ path('panier') }}">Mon panier</a>
-              <a class="dropdown-item" href="{{ path('panier_commande') }}">Mes commande</a>
+              <a class="dropdown-item" href="{{ path('panier_commande') }}">Mes commandes</a>
             </div>
           </li>
 
