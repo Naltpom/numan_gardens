@@ -222,7 +222,7 @@ class CategorieController extends AbstractController
                 array_push($categories,array($value => $pr->findAllProdCat($cr->findCat($key))));
             }elseif ($request->request->get($key) == "arganBio") {
                 array_push($categories,array($value => $pr->findAllProdCat($cr->findCat($key))));
-            }elseif ($request->request->get($key) == "huilsVegetal") {
+            }elseif ($request->request->get($key) == "huilesVegetal") {
                 array_push($categories,array($value => $pr->findAllProdCat($cr->findCat($key))));
             }
         }

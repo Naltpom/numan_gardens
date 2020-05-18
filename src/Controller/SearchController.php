@@ -24,11 +24,7 @@ class SearchController extends AbstractController
             $produits = $pr->findByName($motRecherche);
             $categories = $catr->findByName($motRecherche);
             $commentaires = $comr->findByName($motRecherche);
-            // dd($categories);
-            // return $this->render('search/index.html.twig', [
-            //     'artistes' => $artistes,
-            //     'records' => $records,
-            // ]);
+
             return  $this->render('search/index.html.twig', compact("produits", "categories", "commentaires"));
         }else{
             return $this->redirectToRoute("home");

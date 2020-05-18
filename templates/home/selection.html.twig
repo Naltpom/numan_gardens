@@ -9,7 +9,23 @@
 
 {% for categorie in categories %}
     {% for key, produits in categorie %}
-        <h3>{{ key }}</h3>
+        {% if key is same as("massage") %}
+        <h3>Massage</h3>
+
+        {% elseif key is same as("beaute") %}
+        <h3>Beauté</h3>
+
+        {% elseif key is same as("hammam") %}
+        <h3>Hammam</h3>
+
+        {% elseif key is same as("arganBio") %}
+        <h3>Argan BIO</h3>
+
+        {% elseif key is same as("huilesVegetal") %}
+        <h3>Huiles Vegetal</h3>
+
+        {% endif %}
+        
         <div class="row">
             <div class="card-columns"> 
                 {% for produit in produits %}

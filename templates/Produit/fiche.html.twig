@@ -108,28 +108,31 @@
   <div class="col-md-10 mx-auto">
     <ul class="list-group">
       {% for commentaire in commentaires %}
-        {% include "Commentaire/card.html.twig" %}
+
+        {% if commentaire.etat.titre is same as("refuser") %}
+        
+          {% include "Commentaire/card.html.twig" %}
 
 
-        {# L'utilisateur connecter doit être admin pour utiliser cette fonction #}
-        {% if is_granted("ROLE_ADMIN") %}
-        <form method="post" action="{{ path('commentaire_etatModifier', {'id': commentaire.id }) }}" class="m-0 mb-4 p-0 form-inline">
-          <div class="form-group">
-              <input type="hidden" name="idProduit" value="{{ produit.id }}">
-              <select class="form-control mr-2" id="etatId" name="etatId">
-                {%  for etat in etats %} 
-                  {% if commentaire.etat.id == etat.id %}
-                    <option value="{{ etat.id }}" selected>{{ etat.titre }}</option>
-                  {% else %}
-                    <option value="{{ etat.id }}">{{ etat.titre }}</option>
-                  {% endif %}
-                {% endfor %}
-              </select>
-              <button class="btn btn-success">Changer l'etat</button>
-          </div>
-        </form> 
+          {# L'utilisateur connecter doit être admin pour utiliser cette fonction #}
+          {% if is_granted("ROLE_ADMIN") %}
+          <form method="post" action="{{ path('commentaire_etatModifier', {'id': commentaire.id }) }}" class="m-0 mb-4 p-0 form-inline">
+            <div class="form-group">
+                <input type="hidden" name="idProduit" value="{{ produit.id }}">
+                <select class="form-control mr-2" id="etatId" name="etatId">
+                  {%  for etat in etats %} 
+                    {% if commentaire.etat.id == etat.id %}
+                      <option value="{{ etat.id }}" selected>{{ etat.titre }}</option>
+                    {% else %}
+                      <option value="{{ etat.id }}">{{ etat.titre }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                <button class="btn btn-success">Changer l'etat</button>
+            </div>
+          </form> 
+          {% endif %}
         {% endif %}
-
 
       {% endfor %}
     </ul>
